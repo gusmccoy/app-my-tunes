@@ -37,6 +37,11 @@ namespace my_tunes
 
             DataTable table = musicDataSet.Tables["playlist"];
 
+            for(int i = 0; i < table.Rows.Count; i++)
+            {
+                DataRow row = table.Rows[i];
+                this.playlistListBox.Items.Add(row["name"].ToString());
+            }
 
         }
 
