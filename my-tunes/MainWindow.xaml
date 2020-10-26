@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:my_tunes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,10,-6">
+        <TextBox Name="titleTxtBox" HorizontalAlignment="Left" Margin="102,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23"/>
+        <TextBox Name="albumTxtBox"  HorizontalAlignment="Left" Margin="102,111,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23" RenderTransformOrigin="0.5,0.479"/>
+        <TextBox Name="artistTxtBox"  HorizontalAlignment="Left" Margin="102,83,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23" RenderTransformOrigin="0.5,0.479"/>
+        <TextBox Name="genreTxtBox"  HorizontalAlignment="Left" Margin="102,139,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23" RenderTransformOrigin="0.5,0.479"/>
+        <TextBox Name="lengthTxtBox"  HorizontalAlignment="Left" Margin="102,167,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23" RenderTransformOrigin="0.5,0.479"/>
+        <TextBox Name="filenameTxtBox"  HorizontalAlignment="Left" Margin="102,195,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23" RenderTransformOrigin="0.5,0.479"/>
+        <Label Content="Title" HorizontalAlignment="Left" Margin="45,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
+        <Label Content="Artist" HorizontalAlignment="Left" Margin="45,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
+        <Label Content="Album" HorizontalAlignment="Left" Margin="45,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
+        <Label Content="Genre" HorizontalAlignment="Left" Margin="45,138,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
+        <Label Content="Length" HorizontalAlignment="Left" Margin="45,166,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
+        <Label Content="Filename" HorizontalAlignment="Left" Margin="45,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
+        <Button Name="saveBtn" Content="Save" Click="saveBtn_Click" HorizontalAlignment="Left" Margin="142,247,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
+        <Button Name="deleteBtn" Content="Delete" Click="deleteBtn_Click" HorizontalAlignment="Left" Margin="492,247,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
+        <TextBox Name="idTxtBox" HorizontalAlignment="Left" Margin="452,57,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="23"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="387,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.772"/>
 
     </Grid>
 </Window>
