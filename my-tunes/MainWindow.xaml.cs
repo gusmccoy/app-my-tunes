@@ -26,6 +26,18 @@ namespace my_tunes
         public MainWindow()
         {
             InitializeComponent();
+            musicDataSet = new DataSet();
+            musicDataSet.ReadXmlSchema("music.xsd");
+            musicDataSet.ReadXml("music.xml");
+
+            DataTable table = musicDataSet.Tables["playlist"];
+            DataRow row = table.NewRow();
+
+            row["name"] = "Test Playlist";
+            table.Rows.Add(row);
+
+            musicDataSet.WriteXml("music.xml");
+
             LoadPlaylists();
         }
 
