@@ -29,7 +29,8 @@ namespace my_tunes
             InitializeComponent();
             LoadSongs();
 
-            this.playlistListBox.Items.Add("All Music");
+            //this.playlistListBox.Items.Add("All Music");
+            this.playlistListBox.Items.Clear();
             LoadPlaylists();
         }
 
@@ -41,11 +42,7 @@ namespace my_tunes
 
             DataTable table = musicDataSet.Tables["playlist"];
 
-            for(int i = 0; i < table.Rows.Count; i++)
-            {
-               DataRow row = table.Rows[i];
-               this.playlistListBox.Items.Add(row["name"].ToString());
-            }
+            this.playlistListBox.ItemsSource = table.Rows;
 
         }
 
@@ -58,19 +55,6 @@ namespace my_tunes
             DataTable table = musicDataSet.Tables["song"];
 
             songsDataGrid.ItemsSource = table.DefaultView;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void saveBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void deleteBtn_Click(object sender, RoutedEventArgs e) {
         }
     }
 }

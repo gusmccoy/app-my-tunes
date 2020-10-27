@@ -8,7 +8,11 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="0,0,10,-6">
 
-        <ListBox x:Name="playlistListBox" Margin="10,37,574,10"/>
+        <ListBox x:Name="playlistListBox" Margin="10,37,574,10">
+            <StackPanel>
+                <Label Content="{Binding name}"/>
+            </StackPanel>
+        </ListBox>
         <Label Content="Playlists" HorizontalAlignment="Left" Margin="87,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.434,-0.403"/>
         <DataGrid Name="songsDataGrid" Margin="244,37,10,10">
 
