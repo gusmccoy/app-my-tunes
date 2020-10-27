@@ -14,7 +14,7 @@
             </StackPanel>
         </ListBox>
         <Label Content="Playlists" HorizontalAlignment="Left" Margin="87,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.434,-0.403"/>
-        <DataGrid Name="songsDataGrid" Margin="244,37,10,10" AutoGenerateColumns="False">
+        <DataGrid Name="songsDataGrid" Margin="244,37,10,10" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding title}"  Header="Title"/>
                 <DataGridTextColumn Binding="{Binding artist}"  Header="Artist"/>
