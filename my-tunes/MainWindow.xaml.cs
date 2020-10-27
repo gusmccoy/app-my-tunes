@@ -22,7 +22,6 @@ namespace my_tunes
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DataSet musicDataSet;
         private MusicLib musicLib;
 
         public MainWindow()
@@ -35,9 +34,14 @@ namespace my_tunes
         }
 
         private void LoadPlaylists()
-        {            
+        {
             this.playlistListBox.Items.Clear();
-            this.playlistListBox.ItemsSource = musicLib.Playlists;
+
+            List<string> playlists = new List<string>();
+            playlists.Add("All Music");
+            playlists.AddRange(musicLib.Playlists);
+
+            this.playlistListBox.ItemsSource = playlists;
         }
 
         private void LoadSongs(DataTable table)
@@ -49,7 +53,15 @@ namespace my_tunes
         {
             var selectedPlaylist = playlistListBox.SelectedItem as string;
 
-            LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
+            if(selectedPlaylist == "All Music")
+            {
+                LoadSongs(musicLib.Songs);
+            }
+            else
+            {
+                LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
+            }
+           
         }
     }
 }
