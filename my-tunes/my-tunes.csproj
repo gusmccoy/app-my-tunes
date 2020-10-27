@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="taglib-sharp">
+      <HintPath>bin\Debug\netcoreapp3.1\taglib-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="music.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

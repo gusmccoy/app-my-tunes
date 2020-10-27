@@ -110,6 +110,11 @@ namespace my_tunes
             return s;
         }
 
+        private void GetSongData(Song s)
+        {
+            throw new NotImplementedException();
+        }
+
 
         /// <summary>
         /// Return a Song for the given song ID. Returns null if the song was not found.
