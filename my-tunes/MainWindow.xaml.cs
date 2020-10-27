@@ -44,6 +44,15 @@ namespace my_tunes
             this.playlistListBox.ItemsSource = playlists;
         }
 
+        private void ReloadPlaylists()
+        {
+            List<string> playlists = new List<string>();
+            playlists.Add("All Music");
+            playlists.AddRange(musicLib.Playlists);
+
+            this.playlistListBox.ItemsSource = playlists;
+        }
+
         private void LoadSongs(DataTable table)
         {
             songsDataGrid.ItemsSource = table.DefaultView;
@@ -62,6 +71,24 @@ namespace my_tunes
                 LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
             }
            
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            //Go and add a save later
+            //make it to where you can't do it on all music
+            var playlistToDelete = playlistListBox.SelectedItem as string;
+
+            musicLib.DeletePlaylist(playlistToDelete);
+            ReloadPlaylists();
+        }
+
+        private void rename_Click(object sender, RoutedEventArgs e)
+        {
+            // add confirmation box
+
+            var playlistToRename = playlistListBox.SelectedItem as string;
+            //musicLib.RenamePlaylist(playlistToRename, NEWNAME);
         }
     }
 }

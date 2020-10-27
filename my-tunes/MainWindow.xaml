@@ -9,6 +9,13 @@
     <Grid Margin="0,0,10,-6">
 
         <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="rename" Header="Rename" Click="rename_Click"/>
+                    <MenuItem x:Name="delete" Header="Delete" Click="delete_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+
             <ListBoxItem>
                 <StackPanel>
                     <Label>All Music</Label>
@@ -26,8 +33,7 @@
                 <DataGridTextColumn Binding="{Binding genre}"  Header="Genre"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="playButton" Content="Play" HorizontalAlignment="Left" Margin="118,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
-        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Margin="217,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
-
+        <Button x:Name="playButton" Content="Play" HorizontalAlignment="Left" Margin="118,370,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Margin="217,370,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
     </Grid>
 </Window>
