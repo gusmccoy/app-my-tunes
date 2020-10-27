@@ -23,38 +23,26 @@ namespace my_tunes
     public partial class MainWindow : Window
     {
         private DataSet musicDataSet;
+        private MusicLib musicLib;
 
         public MainWindow()
         {
             InitializeComponent();
-            LoadSongs();
+            musicLib = new MusicLib();
 
-            //this.playlistListBox.Items.Add("All Music");
-            this.playlistListBox.Items.Clear();
+            LoadSongs();
             LoadPlaylists();
         }
 
         private void LoadPlaylists()
-        {
-            musicDataSet = new DataSet();
-            musicDataSet.ReadXmlSchema("music.xsd");
-            musicDataSet.ReadXml("music.xml");
-
-            DataTable table = musicDataSet.Tables["playlist"];
-
-            this.playlistListBox.ItemsSource = table.Rows;
-
+        {            
+            this.playlistListBox.Items.Clear();
+            this.playlistListBox.ItemsSource = musicLib.Playlists;
         }
 
         private void LoadSongs()
         {
-            musicDataSet = new DataSet();
-            musicDataSet.ReadXmlSchema("music.xsd");
-            musicDataSet.ReadXml("music.xml");
-
-            DataTable table = musicDataSet.Tables["song"];
-
-            songsDataGrid.ItemsSource = table.DefaultView;
+            songsDataGrid.ItemsSource = musicLib.Songs.DefaultView;
         }
     }
 }
