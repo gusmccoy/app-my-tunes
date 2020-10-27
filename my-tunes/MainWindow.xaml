@@ -8,18 +8,17 @@
         Title="myTunes by Gus and Spencer" Height="450" Width="800">
     <Grid Margin="0,0,10,-6">
 
-        <ListBox x:Name="playlistListBox" Margin="10,37,574,10" SelectionChanged="playlistListBox_SelectionChanged">
+        <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged">
             <ListBoxItem>
                 <StackPanel>
                     <Label>All Music</Label>
                 </StackPanel>
             </ListBoxItem>
             <StackPanel>
-               <Label Content="{Binding name}"/>
+                <Label Content="{Binding name}"/>
             </StackPanel>
         </ListBox>
-        <Label Content="Playlists" HorizontalAlignment="Left" Margin="87,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.434,-0.403"/>
-        <DataGrid Name="songsDataGrid" Margin="244,37,10,10" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="songsDataGrid" Margin="118,37,10,76" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding title}"  Header="Title"/>
                 <DataGridTextColumn Binding="{Binding artist}"  Header="Artist"/>
@@ -27,7 +26,8 @@
                 <DataGridTextColumn Binding="{Binding genre}"  Header="Genre"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Songs" HorizontalAlignment="Left" Margin="491,11,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="playButton" Content="Play" HorizontalAlignment="Left" Margin="118,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Margin="217,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
 
     </Grid>
 </Window>
