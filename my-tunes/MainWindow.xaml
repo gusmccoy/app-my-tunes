@@ -20,7 +20,6 @@
                 <DataGridTextColumn Binding="{Binding artist}"  Header="Artist"/>
                 <DataGridTextColumn Binding="{Binding album}"  Header="Album"/>
                 <DataGridTextColumn Binding="{Binding genre}"  Header="Genre"/>
-                <DataGridTextColumn Binding="{Binding length}"  Header="Length"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Songs" HorizontalAlignment="Left" Margin="491,11,0,0" VerticalAlignment="Top"/>
