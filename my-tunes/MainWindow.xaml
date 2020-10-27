@@ -8,7 +8,7 @@
         Title="myTunes by Gus and Spencer" Height="450" Width="800">
     <Grid Margin="0,0,10,-6">
 
-        <ListBox x:Name="playlistListBox" Margin="10,37,574,10">
+        <ListBox x:Name="playlistListBox" Margin="10,37,574,10" SelectionChanged="playlistListBox_SelectionChanged">
             <StackPanel>
                 <Label Content="{Binding name}"/>
             </StackPanel>

@@ -30,7 +30,7 @@ namespace my_tunes
             InitializeComponent();
             musicLib = new MusicLib();
 
-            LoadSongs();
+            LoadSongs(musicLib.Songs);
             LoadPlaylists();
         }
 
@@ -40,10 +40,16 @@ namespace my_tunes
             this.playlistListBox.ItemsSource = musicLib.Playlists;
         }
 
-        private void LoadSongs()
+        private void LoadSongs(DataTable table)
         {
-            this.songsDataGrid.Items.Clear();
-            songsDataGrid.ItemsSource = musicLib.Songs.DefaultView;
+            songsDataGrid.ItemsSource = table.DefaultView;
+        }
+
+        private void playlistListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedPlaylist = playlistListBox.SelectedItem as string;
+
+            LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
         }
     }
 }
