@@ -42,6 +42,7 @@ namespace my_tunes
 
         private void LoadSongs()
         {
+            this.songsDataGrid.Items.Clear();
             songsDataGrid.ItemsSource = musicLib.Songs.DefaultView;
         }
     }
