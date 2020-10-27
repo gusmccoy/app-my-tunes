@@ -4,4 +4,4 @@ from the app and organized into playlists. The last.fm web API is used to show e
 playlist data is stored in an XML file.  
    
 Gus McCoy and Spencer Hill  
-***Procrastination Penalty Requirements- Pending*** 
+***Procrastination Penalty Requirements- 10/10*** 
