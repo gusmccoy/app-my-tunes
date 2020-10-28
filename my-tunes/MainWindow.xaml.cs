@@ -85,8 +85,7 @@ namespace my_tunes
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            //Go and add a save later
-            //make it to where you can't do it on all music
+            // Go and add a save later
             var playlistToDelete = playlistListBox.SelectedItem as string;
 
             musicLib.DeletePlaylist(playlistToDelete);
@@ -95,9 +94,31 @@ namespace my_tunes
 
         private void rename_Click(object sender, RoutedEventArgs e)
         {
-            // add confirmation box
-
+            // Add a save later
+            RenameConfirmation renameConfirmation = new RenameConfirmation();
             var playlistToRename = playlistListBox.SelectedItem as string;
+
+            bool? dialogResult = renameConfirmation.ShowDialog();
+
+            switch (dialogResult)
+            {
+                case true:
+                    if (renameConfirmation.NewName.Trim() != "")
+                    {
+                        musicLib.RenamePlaylist(playlistToRename, renameConfirmation.NewName);
+                        ReloadPlaylists();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a new playlist name");
+                    }
+
+                    break;
+
+                case false:
+                    break;
+            }
+
             //musicLib.RenamePlaylist(playlistToRename, NEWNAME);
         }
     }
