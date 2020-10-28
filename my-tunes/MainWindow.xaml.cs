@@ -65,10 +65,20 @@ namespace my_tunes
             if(selectedPlaylist == "All Music")
             {
                 LoadSongs(musicLib.Songs);
+
+                foreach (Control item in playlistContextMenu.Items)
+                {
+                    item.IsEnabled = false;
+                }
             }
             else
             {
                 LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
+
+                foreach (Control item in playlistContextMenu.Items)
+                {
+                    item.IsEnabled = true;
+                }
             }
            
         }

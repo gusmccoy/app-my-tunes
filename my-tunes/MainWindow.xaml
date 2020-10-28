@@ -10,9 +10,9 @@
 
         <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged">
             <ListBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem x:Name="rename" Header="Rename" Click="rename_Click"/>
-                    <MenuItem x:Name="delete" Header="Delete" Click="delete_Click"/>
+                <ContextMenu x:Name="playlistContextMenu">
+                    <MenuItem x:Name="rename" Header="Rename" Click="rename_Click" IsEnabled="True"/>
+                    <MenuItem x:Name="delete" Header="Delete" Click="delete_Click" IsEnabled="True"/>
                 </ContextMenu>
             </ListBox.ContextMenu>
 
