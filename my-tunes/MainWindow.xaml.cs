@@ -95,17 +95,17 @@ namespace my_tunes
         private void rename_Click(object sender, RoutedEventArgs e)
         {
             // Add a save later
-            RenameConfirmation renameConfirmation = new RenameConfirmation();
+            RenameConfirmationWindow renameConfirmationWindow = new RenameConfirmationWindow();
             var playlistToRename = playlistListBox.SelectedItem as string;
 
-            bool? dialogResult = renameConfirmation.ShowDialog();
+            bool? dialogResult = renameConfirmationWindow.ShowDialog();
 
             switch (dialogResult)
             {
                 case true:
-                    if (renameConfirmation.NewName.Trim() != "")
+                    if (renameConfirmationWindow.NewName.Trim() != "")
                     {
-                        musicLib.RenamePlaylist(playlistToRename, renameConfirmation.NewName);
+                        musicLib.RenamePlaylist(playlistToRename, renameConfirmationWindow.NewName);
                         ReloadPlaylists();
                     }
                     else
@@ -127,17 +127,17 @@ namespace my_tunes
 
         private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
         {
-            NewPlaylistConfirmation newPlaylistConfirmation = new NewPlaylistConfirmation();
+            NewPlaylistConfirmationWindow newPlaylistConfirmationWindow = new NewPlaylistConfirmationWindow();
             var playlistToRename = playlistListBox.SelectedItem as string;
 
-            bool? dialogResult = newPlaylistConfirmation.ShowDialog();
+            bool? dialogResult = newPlaylistConfirmationWindow.ShowDialog();
 
             switch (dialogResult)
             {
                 case true:
-                    if (newPlaylistConfirmation.NewName.Trim() != "")
+                    if (newPlaylistConfirmationWindow.NewName.Trim() != "")
                     {
-                        musicLib.AddPlaylist(newPlaylistConfirmation.NewName);
+                        musicLib.AddPlaylist(newPlaylistConfirmationWindow.NewName);
                         ReloadPlaylists();
                     }
                     else
@@ -154,7 +154,9 @@ namespace my_tunes
 
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
+            AboutWindow aboutWindow = new AboutWindow();
 
+            aboutWindow.ShowDialog();
         }
     }
 }

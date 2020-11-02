@@ -15,7 +15,7 @@ namespace my_tunes
     /// <summary>
     /// Interaction logic for newPlaylistConfirmation.xaml
     /// </summary>
-    public partial class NewPlaylistConfirmation : Window
+    public partial class NewPlaylistConfirmationWindow : Window
     {
         private string newName;
         public string NewName
@@ -26,7 +26,7 @@ namespace my_tunes
             }
         }
 
-        public NewPlaylistConfirmation()
+        public NewPlaylistConfirmationWindow()
         {
             InitializeComponent();
             newName = "";

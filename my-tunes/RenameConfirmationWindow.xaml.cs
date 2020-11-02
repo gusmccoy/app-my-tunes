@@ -15,7 +15,7 @@ namespace my_tunes
     /// <summary>
     /// Interaction logic for RenameConfirmation.xaml
     /// </summary>
-    public partial class RenameConfirmation : Window
+    public partial class RenameConfirmationWindow : Window
     {
         private string newName;
         public string NewName
@@ -25,7 +25,7 @@ namespace my_tunes
                 return newName;
             }
         }
-        public RenameConfirmation()
+        public RenameConfirmationWindow()
         {
             InitializeComponent();
             newName = "";
