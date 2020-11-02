@@ -8,9 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="filesIcon.ico" />
+    <None Remove="infoIcon.ico" />
+    <None Remove="musicIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="taglib-sharp">
       <HintPath>bin\Debug\netcoreapp3.1\taglib-sharp.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="filesIcon.ico" />
+    <Resource Include="infoIcon.ico" />
+    <Resource Include="musicIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>

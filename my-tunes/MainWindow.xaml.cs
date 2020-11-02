@@ -118,8 +118,43 @@ namespace my_tunes
                 case false:
                     break;
             }
+        }
 
-            //musicLib.RenamePlaylist(playlistToRename, NEWNAME);
+        private void openFileButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewPlaylistConfirmation newPlaylistConfirmation = new NewPlaylistConfirmation();
+            var playlistToRename = playlistListBox.SelectedItem as string;
+
+            bool? dialogResult = newPlaylistConfirmation.ShowDialog();
+
+            switch (dialogResult)
+            {
+                case true:
+                    if (newPlaylistConfirmation.NewName.Trim() != "")
+                    {
+                        musicLib.AddPlaylist(newPlaylistConfirmation.NewName);
+                        ReloadPlaylists();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a playlist name");
+                    }
+
+                    break;
+
+                case false:
+                    break;
+            }
+        }
+
+        private void aboutButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

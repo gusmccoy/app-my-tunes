@@ -7,7 +7,19 @@
         mc:Ignorable="d"
         Title="myTunes by Gus and Spencer" Height="450" Width="800">
     <Grid Margin="0,0,10,-6">
-
+        <ToolBarTray Background="White" RenderTransformOrigin="0.5,0.5">
+            <ToolBar RenderTransformOrigin="0.5,0.5" Margin="5,0,-5,0">
+                <Button x:Name="openFileButton" Click="openFileButton_Click">
+                    <Image Source="filesIcon.ico"/>
+                </Button>
+                <Button x:Name="addPlaylistButton" Click="addPlaylistButton_Click">
+                    <Image Source="/musicIcon.ico"/>
+                </Button>
+                <Button x:Name="aboutButton" Click="aboutButton_Click">
+                    <Image Source="/infoIcon.ico"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
         <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged">
             <ListBox.ContextMenu>
                 <ContextMenu x:Name="playlistContextMenu">
