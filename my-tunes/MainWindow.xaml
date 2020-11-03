@@ -53,7 +53,7 @@
                 <DataGridTextColumn Binding="{Binding genre}"  Header="Genre"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="playButton" Content="Play" HorizontalAlignment="Left" Margin="118,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
-        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Margin="217,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+        <Button x:Name="playButton" Content="Play" Click="playButton_Click" HorizontalAlignment="Left" Margin="118,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+        <Button x:Name="stopButton" Content="Stop" Click="stopButton_Click" HorizontalAlignment="Left" Margin="217,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
     </Grid>
 </Window>

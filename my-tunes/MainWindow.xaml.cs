@@ -130,6 +130,7 @@ namespace my_tunes
 
         private void openFileButton_Click(object sender, RoutedEventArgs e)
         {
+            // Add Save later
             var fileDialog = new OpenFileDialog();
             fileDialog.Filter = "All Supported Audio | *.mp3; *.m4a; *.wav; *.wma";
             bool? dialogResult = fileDialog.ShowDialog();
@@ -138,7 +139,11 @@ namespace my_tunes
             {
                 case true:
                     string path = fileDialog.FileName;
-                    musicLib.AddSong(path);
+                    Song s = musicLib.AddSong(path);
+                    //foreach (var cell in songsDataGrid.Items)
+                    //{
+                    //    cell
+                    //}
                     ReloadPlaylists();
                     break;
 
@@ -242,6 +247,16 @@ namespace my_tunes
             //    }
             //}
 
+        }
+
+        private void playButton_Click(object sender, RoutedEventArgs e)
+        {
+            //axWindowsMediaPlayer1.URL = @"c:\mediafile.wmv";
+        }
+
+        private void stopButton_Click(object sender, RoutedEventArgs e)
+        {
+            //axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
     }
 }
