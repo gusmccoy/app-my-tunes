@@ -23,6 +23,7 @@ namespace my_tunes
     public partial class MainWindow : Window
     {
         private MusicLib musicLib;
+        private Point startPoint;
 
         public MainWindow()
         {
@@ -162,10 +163,38 @@ namespace my_tunes
 
         private void songsDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
+            // Get the current mouse position
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            // Start the drag-drop if mouse has moved far enough
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                // Initiate dragging the text from the textbox
+                DragDrop.DoDragDrop(songsDataGrid, songsDataGrid, DragDropEffects.Copy);
+            }
 
         }
 
         private void songsDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Store the mouse position
+            startPoint = e.GetPosition(null);
+        }
+
+        private void playlistListBox_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+
+            }
+
+        }
+
+        private void playlistListBox_DragOver(object sender, DragEventArgs e)
         {
 
         }
