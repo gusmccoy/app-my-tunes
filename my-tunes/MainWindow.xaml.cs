@@ -159,5 +159,15 @@ namespace my_tunes
 
             aboutWindow.ShowDialog();
         }
+
+        private void songsDataGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void songsDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

@@ -37,7 +37,8 @@
                 <Label Content="{Binding name}"/>
             </StackPanel>
         </ListBox>
-        <DataGrid Name="songsDataGrid" Margin="118,37,10,76" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="songsDataGrid" Margin="118,37,10,76" AutoGenerateColumns="False" IsReadOnly="True"
+                  MouseMove="songsDataGrid_MouseMove" PreviewMouseLeftButtonDown="songsDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding title}"  Header="Title"/>
                 <DataGridTextColumn Binding="{Binding artist}"  Header="Artist"/>
