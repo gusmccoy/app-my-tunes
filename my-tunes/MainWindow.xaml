@@ -21,7 +21,7 @@
             </ToolBar>
         </ToolBarTray>
         <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged" 
-                 AllowDrop="True" Drop="playlistListBox_Drop" DragOver="playlistListBox_DragOver">
+                 AllowDrop="True" Drop="playlistListBox_Drop">
             <ListBox.ContextMenu>
                 <ContextMenu x:Name="playlistContextMenu">
                     <MenuItem x:Name="rename" Header="Rename" Click="rename_Click" IsEnabled="True"/>

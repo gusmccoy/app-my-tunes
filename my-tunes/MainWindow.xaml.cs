@@ -196,6 +196,21 @@ namespace my_tunes
 
         private void playlistListBox_DragOver(object sender, DragEventArgs e)
         {
+            // By default, don't allow dropping
+            e.Effects = DragDropEffects.None;
+
+            // If the DataObject contains string data, extract it
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+
+                // If the string can be converted into a Brush, allow dropping
+                BrushConverter converter = new BrushConverter();
+                if (converter.IsValid(dataString))
+                {
+                    e.Effects = DragDropEffects.Copy;
+                }
+            }
 
         }
     }
