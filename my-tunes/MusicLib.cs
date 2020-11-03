@@ -104,7 +104,8 @@ namespace my_tunes
                 Filename = filename
             };
 
-            GetSongData(s);
+            // had to comment this out because it wasn't implemented yet not exactly sure what it is for
+            //GetSongData(s);
 
             AddSong(s);
             return s;

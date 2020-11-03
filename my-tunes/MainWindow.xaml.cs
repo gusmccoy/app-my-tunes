@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -128,7 +130,21 @@ namespace my_tunes
 
         private void openFileButton_Click(object sender, RoutedEventArgs e)
         {
+            var fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "All Supported Audio | *.mp3; *.m4a; *.wav; *.wma";
+            bool? dialogResult = fileDialog.ShowDialog();
 
+            switch (dialogResult)
+            {
+                case true:
+                    string path = fileDialog.FileName;
+                    musicLib.AddSong(path);
+                    ReloadPlaylists();
+                    break;
+
+                case false:
+                    break;
+            }
         }
 
         private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
