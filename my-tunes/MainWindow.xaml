@@ -21,7 +21,7 @@
             </ToolBar>
         </ToolBarTray>
         <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged" 
-                 AllowDrop="True" Drop="playlistListBox_Drop">
+                 AllowDrop="True" Drop="playlistListBox_Drop" DragOver="playlistListBox_DragOver">
             <ListBox.ContextMenu>
                 <ContextMenu x:Name="playlistContextMenu">
                     <MenuItem x:Name="rename" Header="Rename" Click="rename_Click" IsEnabled="True"/>
@@ -40,6 +40,12 @@
         </ListBox>
         <DataGrid Name="songsDataGrid" Margin="118,37,10,76" AutoGenerateColumns="False" IsReadOnly="True"
                   MouseMove="songsDataGrid_MouseMove" PreviewMouseLeftButtonDown="songsDataGrid_PreviewMouseLeftButtonDown">
+            <DataGrid.ContextMenu>
+                <ContextMenu x:Name="dataGridContextMenu">
+                    <MenuItem x:Name="remove" Header="Remove" Click="remove_Click" IsEnabled="True"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding title}"  Header="Title"/>
                 <DataGridTextColumn Binding="{Binding artist}"  Header="Artist"/>
