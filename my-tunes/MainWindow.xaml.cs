@@ -34,6 +34,12 @@ namespace my_tunes
 
             LoadSongs(musicLib.Songs);
             LoadPlaylists();
+
+            songsDataGrid.ContextMenu = new ContextMenu();
+            MenuItem removeSong = new MenuItem();
+            removeSong.Header = "Remove";
+            removeSong.Click += remove_Click;
+            songsDataGrid.ContextMenu.Items.Add(removeSong);
         }
 
         private void LoadPlaylists()
