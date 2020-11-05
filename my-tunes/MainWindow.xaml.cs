@@ -73,6 +73,12 @@ namespace my_tunes
                 {
                     item.IsEnabled = false;
                 }
+
+                songsDataGrid.ContextMenu = new ContextMenu();
+                MenuItem removeSong = new MenuItem();
+                removeSong.Header = "Remove";
+                removeSong.Click += remove_Click;
+                songsDataGrid.ContextMenu.Items.Add(removeSong);
             }
             else
             {
@@ -82,6 +88,12 @@ namespace my_tunes
                 {
                     item.IsEnabled = true;
                 }
+
+                songsDataGrid.ContextMenu = new ContextMenu();
+                MenuItem removeSongFromPlaylist = new MenuItem();
+                removeSongFromPlaylist.Header = "Remove Song From Playlist";
+                removeSongFromPlaylist.Click += removeFromPlaylist_Click;
+                songsDataGrid.ContextMenu.Items.Add(removeSongFromPlaylist);
             }
            
         }
@@ -121,11 +133,6 @@ namespace my_tunes
                 case false:
                     break;
             }
-        }
-
-        private void remove_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void openFileButton_Click(object sender, RoutedEventArgs e)
@@ -257,6 +264,35 @@ namespace my_tunes
         private void stopButton_Click(object sender, RoutedEventArgs e)
         {
             //axWindowsMediaPlayer1.Ctlcontrols.stop();
+        }
+
+        private void remove_Click(object sender, RoutedEventArgs e)
+        {
+            // Add a save later
+            var result = MessageBox.Show("Are you sure you want to delete this song?", "Delete Song?", 
+                                        MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                DataRowView song = songsDataGrid.SelectedItem as DataRowView;
+                int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
+                musicLib.DeleteSong(songId);
+                LoadSongs(musicLib.Songs);
+            }
+
+        }
+
+        private void removeFromPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            // Add a save later
+            DataRowView song = songsDataGrid.SelectedItem as DataRowView;
+            var selectedPlaylist = playlistListBox.SelectedItem as string;
+            int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
+            int position = Int32.Parse(song.Row.ItemArray[1].ToString());
+
+            musicLib.RemoveSongFromPlaylist(position, songId, selectedPlaylist);
+            
+            LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
         }
     }
 }
