@@ -213,8 +213,7 @@ namespace my_tunes
             {
                 // Initiate dragging the text from the Row
                 DataRowView song = songsDataGrid.SelectedItem as DataRowView;
-                int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
-                DragDrop.DoDragDrop(songsDataGrid, songId.ToString(), DragDropEffects.Copy);
+                DragDrop.DoDragDrop(songsDataGrid, song.Row.ItemArray[0].ToString(), DragDropEffects.Copy);
             }
 
         }
@@ -227,14 +226,16 @@ namespace my_tunes
 
         private void playlistListBox_Drop(object sender, DragEventArgs e)
         {
-            // If the DataObject contains string data, extract it
-            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            Label playlist = sender as Label;
+
+            if (playlist != null && e.Data.GetDataPresent(DataFormats.StringFormat))
             {
-                String data = (String)e.Data.GetData(DataFormats.StringFormat);
+                string data = (string)e.Data.GetData(DataFormats.StringFormat);
 
                 int songId = Int32.Parse(data);
 
-                musicLib.AddSongToPlaylist(songId, "Test Playlist");
+                musicLib.AddSongToPlaylist(songId, playlist.Content.ToString());
+                musicLib.Save();
             }
 
         }
@@ -244,22 +245,17 @@ namespace my_tunes
             // By default, don't allow dropping
             e.Effects = DragDropEffects.None;
 
-            String[] df = e.Data.GetFormats();
-
-            e.Effects = DragDropEffects.Copy;
-
             // If the DataObject contains string data, extract it
-            //if (e.Data.GetDataPresent(DataFormats.Serializable))
-            //{
-            //    string dataString = (string)e.Data.GetData(DataFormats.Xaml);
-
-            //    // If the string can be converted into a Brush, allow dropping
-            //    BrushConverter converter = new BrushConverter();
-            //    if (converter.IsValid(dataString))
-            //    {
-            //        e.Effects = DragDropEffects.Copy;
-            //    }
-            //}
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+                int value;
+                // If string can be converted into number, allow copy effect
+                if (int.TryParse(dataString, out value))
+                {
+                    e.Effects = DragDropEffects.Copy;
+                }
+            }
 
         }
 

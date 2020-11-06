@@ -20,8 +20,7 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged" 
-                 AllowDrop="True" Drop="playlistListBox_Drop" DragOver="playlistListBox_DragOver">
+        <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged" >
             <ListBox.ContextMenu>
                 <ContextMenu x:Name="playlistContextMenu">
                     <MenuItem x:Name="rename" Header="Rename" Click="rename_Click" IsEnabled="True"/>
@@ -30,13 +29,15 @@
             </ListBox.ContextMenu>
 
             <ListBoxItem>
-                <StackPanel>
-                    <Label>All Music</Label>
-                </StackPanel>
+               <Label>All Music</Label>
             </ListBoxItem>
-            <StackPanel>
-                <Label Content="{Binding name}"/>
-            </StackPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding}" AllowDrop="True" DragOver="playlistListBox_DragOver"
+                           Drop="playlistListBox_Drop"></Label>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
         </ListBox>
         <DataGrid Name="songsDataGrid" Margin="118,37,10,76" AutoGenerateColumns="False" IsReadOnly="True"
                    MouseMove="songsDataGrid_MouseMove" PreviewMouseLeftButtonDown="songsDataGrid_PreviewMouseLeftButtonDown">
