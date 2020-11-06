@@ -202,52 +202,53 @@ namespace my_tunes
 
         private void songsDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
-            //// Get the current mouse position
-            //Point mousePos = e.GetPosition(null);
-            //Vector diff = startPoint - mousePos;
+            // Get the current mouse position
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
 
-            //// Start the drag-drop if mouse has moved far enough
-            //if (e.LeftButton == MouseButtonState.Pressed &&
-            //    (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
-            //    Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
-            //{
-            //    // Initiate dragging the text from the textbox
-            //    DragDrop.DoDragDrop(songsDataGrid, songsDataGrid.SelectedCells, DragDropEffects.Copy);
-            //}
+            // Start the drag-drop if mouse has moved far enough
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                // Initiate dragging the text from the Row
+                DataRowView song = songsDataGrid.SelectedItem as DataRowView;
+                int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
+                DragDrop.DoDragDrop(songsDataGrid, songId, DragDropEffects.Copy);
+            }
 
         }
 
         private void songsDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //// Store the mouse position
-            //startPoint = e.GetPosition(null);
+            // Store the mouse position
+            startPoint = e.GetPosition(null);
         }
 
         private void playlistListBox_Drop(object sender, DragEventArgs e)
         {
-            //// If the DataObject contains string data, extract it
-            //if (e.Data.GetDataPresent(DataFormats.Xaml))
-            //{
-            //    string dataString = (string)e.Data.GetData(DataFormats.Xaml);
+            // If the DataObject contains string data, extract it
+            if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                String data = (String)e.Data.GetData(DataFormats.Text);
 
-            //    // See if the string can be converted into a brush for the ellipse
-            //    BrushConverter converter = new BrushConverter();
-            //    if (converter.IsValid(dataString))
-            //    {
-            //        //Brush newFill = (Brush)converter.ConvertFromString(dataString);
-            //        //ellipse.Fill = newFill;
-            //    }
-            //}
+                int songId = Int32.Parse(data);
+
+                musicLib.AddSongToPlaylist(songId, "Test Playlist");
+            }
 
         }
 
         private void playlistListBox_DragOver(object sender, DragEventArgs e)
         {
-            //// By default, don't allow dropping
-            //e.Effects = DragDropEffects.None;
+            // By default, don't allow dropping
+            e.Effects = DragDropEffects.None;
 
-            //String[] df = e.Data.GetFormats();
-            //// If the DataObject contains string data, extract it
+            String[] df = e.Data.GetFormats();
+
+            e.Effects = DragDropEffects.Copy;
+
+            // If the DataObject contains string data, extract it
             //if (e.Data.GetDataPresent(DataFormats.Serializable))
             //{
             //    string dataString = (string)e.Data.GetData(DataFormats.Xaml);
