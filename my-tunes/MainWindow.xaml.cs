@@ -317,5 +317,13 @@ namespace my_tunes
                     searchBarTextBox.Text);
             }
         }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            // System.Diagnostics.Process.Start(e.Uri.ToString());
+            Hyperlink hyperlink = new Hyperlink();
+            Run run = new Run();
+
+            hyperlink.NavigateUri = new Uri("http://www.bing.com");
+        }
     }
 }
