@@ -297,5 +297,14 @@ namespace my_tunes
             
             LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
         }
+
+        private void searchBarTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(musicLib.Songs.DefaultView != null)
+            {
+                musicLib.Songs.DefaultView.RowFilter = string.Format("title LIKE '%{0}%' OR artist LIKE '%{0}%' OR album LIKE '%{0}%'",
+                    searchBarTextBox.Text);
+            }
+        }
     }
 }
