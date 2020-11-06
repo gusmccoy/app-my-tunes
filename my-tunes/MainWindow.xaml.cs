@@ -107,16 +107,15 @@ namespace my_tunes
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            // Go and add a save later
             var playlistToDelete = playlistListBox.SelectedItem as string;
 
             musicLib.DeletePlaylist(playlistToDelete);
+            musicLib.Save();
             ReloadPlaylists();
         }
 
         private void rename_Click(object sender, RoutedEventArgs e)
         {
-            // Add a save later
             RenameConfirmationWindow renameConfirmationWindow = new RenameConfirmationWindow();
             var playlistToRename = playlistListBox.SelectedItem as string;
 
@@ -128,6 +127,7 @@ namespace my_tunes
                     if (renameConfirmationWindow.NewName.Trim() != "")
                     {
                         musicLib.RenamePlaylist(playlistToRename, renameConfirmationWindow.NewName);
+                        musicLib.Save();
                         ReloadPlaylists();
                     }
                     else
@@ -144,7 +144,6 @@ namespace my_tunes
 
         private void openFileButton_Click(object sender, RoutedEventArgs e)
         {
-            // Add Save later
             var fileDialog = new OpenFileDialog();
             fileDialog.Filter = "All Supported Audio | *.mp3; *.m4a; *.wav; *.wma";
             bool? dialogResult = fileDialog.ShowDialog();
@@ -154,6 +153,7 @@ namespace my_tunes
                 case true:
                     string path = fileDialog.FileName;
                     Song s = musicLib.AddSong(path);
+                    musicLib.Save();
                     //foreach (var cell in songsDataGrid.Items)
                     //{
                     //    cell
@@ -168,7 +168,6 @@ namespace my_tunes
 
         private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
         {
-            // Add a save later
             NewPlaylistConfirmationWindow newPlaylistConfirmationWindow = new NewPlaylistConfirmationWindow();
             var playlistToRename = playlistListBox.SelectedItem as string;
 
@@ -180,6 +179,7 @@ namespace my_tunes
                     if (newPlaylistConfirmationWindow.NewName.Trim() != "")
                     {
                         musicLib.AddPlaylist(newPlaylistConfirmationWindow.NewName);
+                        musicLib.Save();
                         ReloadPlaylists();
                     }
                     else
@@ -272,7 +272,6 @@ namespace my_tunes
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
-            // Add a save later
             var result = MessageBox.Show("Are you sure you want to delete this song?", "Delete Song?", 
                                         MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -281,6 +280,7 @@ namespace my_tunes
                 DataRowView song = songsDataGrid.SelectedItem as DataRowView;
                 int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
                 musicLib.DeleteSong(songId);
+                musicLib.Save();
                 LoadSongs(musicLib.Songs);
             }
 
@@ -288,14 +288,13 @@ namespace my_tunes
 
         private void removeFromPlaylist_Click(object sender, RoutedEventArgs e)
         {
-            // Add a save later
             DataRowView song = songsDataGrid.SelectedItem as DataRowView;
             var selectedPlaylist = playlistListBox.SelectedItem as string;
             int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
             int position = Int32.Parse(song.Row.ItemArray[1].ToString());
 
             musicLib.RemoveSongFromPlaylist(position, songId, selectedPlaylist);
-            
+            musicLib.Save();
             LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
         }
 
