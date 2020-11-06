@@ -60,18 +60,18 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="Title: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding title}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding title}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="Artist: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding artist}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding artist}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="Length: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding length}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding length}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="More Info" VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="More Info" VerticalAlignment="Center" />
                             </StackPanel>
                         </StackPanel>
                     </Border>
