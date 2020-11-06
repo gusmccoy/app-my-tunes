@@ -57,6 +57,6 @@
         </DataGrid>
         <Button x:Name="playButton" Content="Play" Click="playButton_Click" HorizontalAlignment="Left" Margin="118,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
         <Button x:Name="stopButton" Content="Stop" Click="stopButton_Click" HorizontalAlignment="Left" Margin="217,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
-        <TextBox x:Name="searchBarTextBox" HorizontalAlignment="Left" Margin="616,14,0,0" Text="TextBox" TextChanged="searchBarTextBox_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="searchBarTextBox"  HorizontalAlignment="Left" Margin="616,14,0,0" Text="Search" TextChanged="searchBarTextBox_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
     </Grid>
 </Window>

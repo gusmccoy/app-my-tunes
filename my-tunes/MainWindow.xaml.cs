@@ -26,6 +26,7 @@ namespace my_tunes
     {
         private MusicLib musicLib;
         private Point startPoint;
+        private string currentPlaylist = "All Music";
 
         public MainWindow()
         {
@@ -101,7 +102,7 @@ namespace my_tunes
                 removeSongFromPlaylist.Click += removeFromPlaylist_Click;
                 songsDataGrid.ContextMenu.Items.Add(removeSongFromPlaylist);
             }
-           
+           currentPlaylist = selectedPlaylist;
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
@@ -298,11 +299,22 @@ namespace my_tunes
             LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
         }
 
+        // CREDIT TO: https://stackoverflow.com/questions/31809201/how-to-use-textbox-to-search-data-in-data-grid-view
         private void searchBarTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(musicLib.Songs.DefaultView != null)
+            if(musicLib != null)
             {
-                musicLib.Songs.DefaultView.RowFilter = string.Format("title LIKE '%{0}%' OR artist LIKE '%{0}%' OR album LIKE '%{0}%'",
+                DataTable table = new DataTable();
+                if (currentPlaylist != "All Music")
+                {
+                    table = musicLib.SongsForPlaylist(currentPlaylist);
+                }
+                else
+                {
+                    table = musicLib.Songs;
+                }
+                LoadSongs(table);
+                table.DefaultView.RowFilter = string.Format("title LIKE '%{0}%' OR artist LIKE '%{0}%' OR album LIKE '%{0}%'",
                     searchBarTextBox.Text);
             }
         }
