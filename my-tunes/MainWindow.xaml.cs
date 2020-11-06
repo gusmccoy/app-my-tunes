@@ -214,7 +214,7 @@ namespace my_tunes
                 // Initiate dragging the text from the Row
                 DataRowView song = songsDataGrid.SelectedItem as DataRowView;
                 int songId = Int32.Parse(song.Row.ItemArray[0].ToString());
-                DragDrop.DoDragDrop(songsDataGrid, songId, DragDropEffects.Copy);
+                DragDrop.DoDragDrop(songsDataGrid, songId.ToString(), DragDropEffects.Copy);
             }
 
         }
@@ -228,9 +228,9 @@ namespace my_tunes
         private void playlistListBox_Drop(object sender, DragEventArgs e)
         {
             // If the DataObject contains string data, extract it
-            if (e.Data.GetDataPresent(DataFormats.Text))
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
             {
-                String data = (String)e.Data.GetData(DataFormats.Text);
+                String data = (String)e.Data.GetData(DataFormats.StringFormat);
 
                 int songId = Int32.Parse(data);
 
