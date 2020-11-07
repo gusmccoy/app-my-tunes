@@ -71,11 +71,13 @@
                                 <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding length}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="moreInfoTextBlock" FontSize="12" Foreground="MidnightBlue" VerticalAlignment="Center">
-                                    <Hyperlink
-                                        NavigateUri="https://google.com"
-                                        RequestNavigate="Hyperlink_RequestNavigate">
-                                        More Info
+                                <TextBlock x:Name="moreInfoTextBlock" FontSize="12" Foreground="MidnightBlue" VerticalAlignment="Center">                
+                                    <Hyperlink NavigateUri="https://google.com" RequestNavigate="Hyperlink_RequestNavigate">
+                                        <Run>
+                                            <Run.Text>
+                                                More Info
+                                            </Run.Text>
+                                        </Run>
                                     </Hyperlink>
                                 </TextBlock>
                             </StackPanel>

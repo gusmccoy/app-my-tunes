@@ -1,9 +1,13 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -154,10 +158,6 @@ namespace my_tunes
                     string path = fileDialog.FileName;
                     Song s = musicLib.AddSong(path);
                     musicLib.Save();
-                    //foreach (var cell in songsDataGrid.Items)
-                    //{
-                    //    cell
-                    //}
                     ReloadPlaylists();
                     break;
 
@@ -319,11 +319,13 @@ namespace my_tunes
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            // System.Diagnostics.Process.Start(e.Uri.ToString());
-            Hyperlink hyperlink = new Hyperlink();
-            Run run = new Run();
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = e.Uri.AbsoluteUri,
+                UseShellExecute = true
+            };
 
-            hyperlink.NavigateUri = new Uri("http://www.bing.com");
+            Process.Start(processStartInfo);
         }
     }
 }

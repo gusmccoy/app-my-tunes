@@ -6,12 +6,17 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Threading.Tasks;
+using System.Net;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace my_tunes
 {
     class MusicLib
     {
         private DataSet musicDataSet;
+        private string API_KEY = "e1d7cac3d825c39c69e1e0f2a73ca7f8";
 
         public const string XML_MUSICFILE = "music.xml";
         public const string XSD_MUSICFILE = "music.xsd";
@@ -59,6 +64,41 @@ namespace my_tunes
         }
 
         /// <summary>
+        /// Gets json from last.fm and adds the correct url and
+        /// image to each song this is supposed to be called whenever
+        /// a song is added I'm just not sure where to put it for the 
+        /// initial adding from the music.xml file
+        /// </summary>
+        /// <param name="song"></param>
+        /// <returns></returns>
+        private async Task AddJsonElemnts(Song song)
+        {
+            string artist = song.Artist;
+            string title = song.Title;
+            string uri = "";
+
+            var url = "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=" + API_KEY +
+                      "&format=json&artist=" + WebUtility.UrlEncode(artist) + "&track=" + WebUtility.UrlEncode(title);
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var json = await httpClient.GetStringAsync(url);
+                    // Use JSON.Net to convert into C# object
+                    dynamic jsonObj = JsonConvert.DeserializeObject(json);
+                    uri = jsonObj.track.url;
+                    song.Url = jsonObj.track.url;
+                    song.Image = jsonObj.track.album.image[0]["#text"];
+                }
+            }
+            catch (Exception x)
+            {
+
+            }
+        }
+
+        /// <summary>
         /// Adds a song to the music library and returns the song's ID. The Song's ID
         /// is also updated to reflect the song's auto-assigned ID.
         /// </summary>
@@ -88,7 +128,7 @@ namespace my_tunes
         /// </summary>
         /// <param name="filename">MP3 filename</param>
         /// <returns>Song created from the MP3</returns>
-        public Song AddSong(string filename)
+        public async Task<Song> AddSong(string filename)
         {
             // PM> Install-Package taglib
             // http://stackoverflow.com/questions/1750464/how-to-read-and-write-id3-tags-to-an-mp3-in-c
@@ -106,7 +146,7 @@ namespace my_tunes
 
             // had to comment this out because it wasn't implemented yet not exactly sure what it is for
             //GetSongData(s);
-
+            await AddJsonElemnts(s);
             AddSong(s);
             return s;
         }

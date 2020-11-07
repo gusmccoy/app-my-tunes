@@ -14,6 +14,8 @@ namespace my_tunes
         public string Genre { set; get; }
         public string Length { set; get; }
         public string Filename { set; get; }
+        public string Url { set; get; }
+        public string Image { set; get; }
 
         // Two songs are equal if all their properties are equal
         public override bool Equals(object obj)
@@ -24,7 +26,7 @@ namespace my_tunes
 
             return s.Id == Id && s.Title == Title && s.Artist == Artist &&
                 s.Album == Album && s.Genre == Genre && s.Length == Length &&
-                s.Filename == Filename;
+                s.Filename == Filename && s.Url == Url && s.Image == Image;
         }
 
         public override int GetHashCode()
