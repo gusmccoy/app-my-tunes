@@ -75,7 +75,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock x:Name="moreInfoTextBlock" FontSize="12" Foreground="MidnightBlue" VerticalAlignment="Center">                
-                                    <Hyperlink NavigateUri="https://google.com" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <Hyperlink NavigateUri="{Binding url}" RequestNavigate="Hyperlink_RequestNavigate">
                                         <Run>
                                             <Run.Text>
                                                 More Info
