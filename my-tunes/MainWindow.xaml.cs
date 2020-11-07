@@ -161,6 +161,7 @@ namespace my_tunes
                     await musicLib.AddSong(path);
                     musicLib.Save();
                     ReloadPlaylists();
+                    songsDataGrid.SelectedItem = songsDataGrid.Items[songsDataGrid.Items.Count - 1];
                     break;
 
                 case false:

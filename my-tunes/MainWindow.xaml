@@ -45,6 +45,7 @@
                 <ContextMenu x:Name="dataGridContextMenu">
                     <MenuItem x:Name="remove" Header="Remove" Click="remove_Click" IsEnabled="True"/>
                     <MenuItem x:Name="removeFromPlaylist" Header="Remove From Playlist" Click="removeFromPlaylist_Click" IsEnabled="True"/>
+                    <MenuItem x:Name="play" Header="Play" Click="playButton_Click" IsEnabled="True"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
 
