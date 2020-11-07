@@ -40,7 +40,8 @@
 
         </ListBox>
         <DataGrid Name="songsDataGrid" Margin="118,37,10,76" AutoGenerateColumns="False" IsReadOnly="True"
-                   MouseMove="songsDataGrid_MouseMove" PreviewMouseLeftButtonDown="songsDataGrid_PreviewMouseLeftButtonDown">
+                   MouseMove="songsDataGrid_MouseMove" PreviewMouseLeftButtonDown="songsDataGrid_PreviewMouseLeftButtonDown" 
+                   SelectionChanged="songsDataGrid_SelectionChanged">
             <DataGrid.ContextMenu>
                 <ContextMenu x:Name="dataGridContextMenu">
                     <MenuItem x:Name="remove" Header="Remove" Click="remove_Click" IsEnabled="True"/>
