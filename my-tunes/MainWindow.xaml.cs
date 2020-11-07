@@ -319,6 +319,7 @@ namespace my_tunes
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
+            // CREDIT TO: https://stackoverflow.com/questions/502199/how-to-open-a-web-page-from-my-application
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = e.Uri.AbsoluteUri,
