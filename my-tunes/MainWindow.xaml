@@ -58,6 +58,7 @@
                 <DataTemplate>
                     <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
                         <StackPanel Orientation="Vertical">
+                            <Image Source="{Binding image}"></Image>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="Title: " VerticalAlignment="Center" />
                                 <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding title}" VerticalAlignment="Center" />

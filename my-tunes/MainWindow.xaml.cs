@@ -146,7 +146,7 @@ namespace my_tunes
             }
         }
 
-        private void openFileButton_Click(object sender, RoutedEventArgs e)
+        private async void openFileButton_Click(object sender, RoutedEventArgs e)
         {
             var fileDialog = new OpenFileDialog();
             fileDialog.Filter = "All Supported Audio | *.mp3; *.m4a; *.wav; *.wma";
@@ -156,7 +156,7 @@ namespace my_tunes
             {
                 case true:
                     string path = fileDialog.FileName;
-                    Song s = musicLib.AddSong(path);
+                    await musicLib.AddSong(path);
                     musicLib.Save();
                     ReloadPlaylists();
                     break;
