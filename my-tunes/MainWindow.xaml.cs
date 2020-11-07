@@ -32,6 +32,8 @@ namespace my_tunes
         private Point startPoint;
         private string currentPlaylist = "All Music";
 
+        MediaPlayer mediaPlayer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -262,12 +264,23 @@ namespace my_tunes
 
         private void playButton_Click(object sender, RoutedEventArgs e)
         {
-            //axWindowsMediaPlayer1.URL = @"c:\mediafile.wmv";
+            mediaPlayer = new MediaPlayer();
+
+            if(mediaPlayer != null)
+            {
+                DataRowView song = songsDataGrid.SelectedItem as DataRowView;
+                String filename = song.Row.ItemArray[4].ToString();
+                mediaPlayer.Open(new Uri(filename));
+                mediaPlayer.Play();
+            }
         }
 
         private void stopButton_Click(object sender, RoutedEventArgs e)
         {
-            //axWindowsMediaPlayer1.Ctlcontrols.stop();
+            if(mediaPlayer != null)
+            {
+                mediaPlayer.Stop();
+            }
         }
 
         private void remove_Click(object sender, RoutedEventArgs e)
