@@ -91,8 +91,8 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <Button x:Name="playButton" VerticalAlignment="Bottom" Content="Play" Click="playButton_Click" HorizontalAlignment="Left" Margin="118,0,0,36" Height="40" Width="94"/>
-        <Button x:Name="stopButton" Content="Stop" Click="stopButton_Click" HorizontalAlignment="Left" Margin="217,0,0,36" VerticalAlignment="Bottom" Height="40" Width="94"/>
+        <Button x:Name="playButton" Style="{StaticResource roundButton}" VerticalAlignment="Bottom" Content="Play" Click="playButton_Click" HorizontalAlignment="Left" Margin="118,0,0,36" Height="40" Width="94"/>
+        <Button x:Name="stopButton" Style="{StaticResource roundButton}" Content="Stop" Click="stopButton_Click" HorizontalAlignment="Left" Margin="217,0,0,36" VerticalAlignment="Bottom" Height="40" Width="94"/>
         <TextBox x:Name="searchBarTextBox" Margin="0,14,10,0" Text="Search" TextChanged="searchBarTextBox_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="142"/>
     </Grid>
 </Window>
