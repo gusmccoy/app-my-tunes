@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>my_tunes</RootNamespace>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>musicIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,9 +40,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="music.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="music.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>music.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
