@@ -48,6 +48,10 @@ namespace my_tunes
             removeSong.Header = "Remove";
             removeSong.Click += remove_Click;
             songsDataGrid.ContextMenu.Items.Add(removeSong);
+            MenuItem playSong = new MenuItem();
+            playSong.Header = "Play";
+            playSong.Click += playButton_Click;
+            songsDataGrid.ContextMenu.Items.Add(playSong);
 
             playButton.IsEnabled = false;
             stopButton.IsEnabled = false;
@@ -97,7 +101,11 @@ namespace my_tunes
                 MenuItem removeSong = new MenuItem();
                 removeSong.Header = "Remove";
                 removeSong.Click += remove_Click;
+                MenuItem playSong = new MenuItem();
+                playSong.Header = "Play";
+                playSong.Click += playButton_Click;
                 songsDataGrid.ContextMenu.Items.Add(removeSong);
+                songsDataGrid.ContextMenu.Items.Add(playSong);
             }
             else
             {
@@ -115,6 +123,10 @@ namespace my_tunes
                 MenuItem removeSongFromPlaylist = new MenuItem();
                 removeSongFromPlaylist.Header = "Remove Song From Playlist";
                 removeSongFromPlaylist.Click += removeFromPlaylist_Click;
+                MenuItem playSong = new MenuItem();
+                playSong.Header = "Play";
+                playSong.Click += playButton_Click;
+                songsDataGrid.ContextMenu.Items.Add(playSong);
                 songsDataGrid.ContextMenu.Items.Add(removeSongFromPlaylist);
             }
 
