@@ -4,4 +4,29 @@ from the app and organized into playlists. The last.fm web API is used to show e
 playlist data is stored in an XML file.  
    
 Gus McCoy and Spencer Hill  
-***Procrastination Penalty Requirements- 10/10*** 
+***Procrastination Penalty Requirements- 10/10***   
+   
+***50-50 Effort***   
+Contributions:   
+Gus   
+- Show songs from All Music and playlists   
+- Songs in Data Grid
+- Detail Panel   
+- Play and stop song   
+- Drag and Drop Songs   
+- Changes saved to music.xml   
+- Web API fetch album cover and More Info Link   
+- Search for song   
+- Control template for Play and Stop buttons, Style Buttons   
+
+Spencer   
+- Hyperlink   
+- Toolbar   
+- Add songs via dialog   
+- Create Playlists   
+- Delete songs   
+- Web API code   
+- Windows resizable   
+- About dialog box   
+- Rename and delete playlist   
+- Control template for Play and Stop buttons, Enable/Disable Buttons
