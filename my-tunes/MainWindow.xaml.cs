@@ -31,6 +31,7 @@ namespace my_tunes
         private MusicLib musicLib;
         private Point startPoint;
         private string currentPlaylist = "All Music";
+        private bool playButtonEnabled = false;
 
         MediaPlayer mediaPlayer;
 
@@ -47,6 +48,9 @@ namespace my_tunes
             removeSong.Header = "Remove";
             removeSong.Click += remove_Click;
             songsDataGrid.ContextMenu.Items.Add(removeSong);
+
+            playButton.IsEnabled = false;
+            stopButton.IsEnabled = false;
         }
 
         private void LoadPlaylists()
@@ -78,13 +82,15 @@ namespace my_tunes
         {
             var selectedPlaylist = playlistListBox.SelectedItem as string;
 
-            if(selectedPlaylist == "All Music")
+            if (selectedPlaylist == "All Music")
             {
                 LoadSongs(musicLib.Songs);
 
                 foreach (Control item in playlistContextMenu.Items)
                 {
                     item.IsEnabled = false;
+                    playButton.IsEnabled = false;
+                    playButtonEnabled = false;
                 }
 
                 songsDataGrid.ContextMenu = new ContextMenu();
@@ -95,11 +101,14 @@ namespace my_tunes
             }
             else
             {
+                
                 LoadSongs(musicLib.SongsForPlaylist(selectedPlaylist));
 
                 foreach (Control item in playlistContextMenu.Items)
                 {
                     item.IsEnabled = true;
+                    playButton.IsEnabled = false;
+                    playButtonEnabled = false;
                 }
 
                 songsDataGrid.ContextMenu = new ContextMenu();
@@ -108,6 +117,7 @@ namespace my_tunes
                 removeSongFromPlaylist.Click += removeFromPlaylist_Click;
                 songsDataGrid.ContextMenu.Items.Add(removeSongFromPlaylist);
             }
+
            currentPlaylist = selectedPlaylist;
         }
 
@@ -263,8 +273,17 @@ namespace my_tunes
 
         }
 
+        private void songsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            playButton.IsEnabled = true;
+            playButtonEnabled = true;
+        }
+
         private void playButton_Click(object sender, RoutedEventArgs e)
         {
+            playButton.IsEnabled = false;
+            stopButton.IsEnabled = true;
+
             mediaPlayer = new MediaPlayer();
 
             if(mediaPlayer != null)
@@ -278,6 +297,13 @@ namespace my_tunes
 
         private void stopButton_Click(object sender, RoutedEventArgs e)
         {
+            if (playButtonEnabled)
+            {
+                playButton.IsEnabled = true;
+            }
+
+            stopButton.IsEnabled = false;
+
             if(mediaPlayer != null)
             {
                 mediaPlayer.Stop();

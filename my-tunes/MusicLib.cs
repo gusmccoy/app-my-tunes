@@ -65,9 +65,7 @@ namespace my_tunes
 
         /// <summary>
         /// Gets json from last.fm and adds the correct url and
-        /// image to each song this is supposed to be called whenever
-        /// a song is added I'm just not sure where to put it for the 
-        /// initial adding from the music.xml file
+        /// image to each song 
         /// </summary>
         /// <param name="song"></param>
         /// <returns></returns>
