@@ -20,7 +20,7 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        <ListBox x:Name="playlistListBox" Margin="10,37,677,10" SelectionChanged="playlistListBox_SelectionChanged" >
+        <ListBox x:Name="playlistListBox" HorizontalAlignment="Left" MaxWidth="100" Margin="10,37,0,10" SelectionChanged="playlistListBox_SelectionChanged" Width="93" >
             <ListBox.ContextMenu>
                 <ContextMenu x:Name="playlistContextMenu">
                     <MenuItem x:Name="rename" Header="Rename" Click="rename_Click" IsEnabled="True"/>
@@ -91,8 +91,8 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <Button x:Name="playButton" Content="Play" Click="playButton_Click" HorizontalAlignment="Left" Margin="118,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
-        <Button x:Name="stopButton" Content="Stop" Click="stopButton_Click" HorizontalAlignment="Left" Margin="217,364,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
-        <TextBox x:Name="searchBarTextBox"  HorizontalAlignment="Left" Margin="616,14,0,0" Text="Search" TextChanged="searchBarTextBox_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <Button x:Name="playButton" VerticalAlignment="Bottom" Content="Play" Click="playButton_Click" HorizontalAlignment="Left" Margin="118,0,0,36" Height="40" Width="94"/>
+        <Button x:Name="stopButton" Content="Stop" Click="stopButton_Click" HorizontalAlignment="Left" Margin="217,0,0,36" VerticalAlignment="Bottom" Height="40" Width="94"/>
+        <TextBox x:Name="searchBarTextBox" Margin="0,14,10,0" Text="Search" TextChanged="searchBarTextBox_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="142"/>
     </Grid>
 </Window>
