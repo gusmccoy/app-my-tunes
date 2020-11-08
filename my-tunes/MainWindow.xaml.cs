@@ -291,7 +291,10 @@ namespace my_tunes
                 DataRowView song = songsDataGrid.SelectedItem as DataRowView;
                 String filename = song.Row.ItemArray[4].ToString();
                 mediaPlayer.Open(new Uri(filename));
-                mediaPlayer.Play();
+                if (mediaPlayer.HasAudio)
+                {
+                    mediaPlayer.Play();
+                }
             }
         }
 
