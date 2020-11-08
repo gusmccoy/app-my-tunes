@@ -289,13 +289,22 @@ namespace my_tunes
             if(mediaPlayer != null)
             {
                 DataRowView song = songsDataGrid.SelectedItem as DataRowView;
-                string filename = song.Row.ItemArray[4].ToString();
-                mediaPlayer.Open(new Uri(filename));
-                if (mediaPlayer.HasAudio)
-                {
-                    mediaPlayer.Play();
-                }
+                Uri uri = new Uri(song.Row.ItemArray[4].ToString());
+                mediaPlayer.MediaOpened += OnMediaOpened;
+                mediaPlayer.MediaFailed += OnMediaFailed;
+                mediaPlayer.Open(uri);
             }
+        }
+
+        private void OnMediaOpened(object sender, EventArgs e)
+        {
+            var player = (MediaPlayer)sender;
+            player.Play();
+        }
+
+        private void OnMediaFailed(object sender, ExceptionEventArgs e)
+        {
+            var exception = e.ErrorException;
         }
 
         private void stopButton_Click(object sender, RoutedEventArgs e)
